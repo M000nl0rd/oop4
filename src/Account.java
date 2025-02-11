@@ -1,12 +1,16 @@
 public class Account {
     private int number;
     private String pinCode;
-    private double remainder;
+    private double balance;
+    private String firstName;
+    private String lastName;
 
-    public Account(int number, String pinCode, double remainder) {
+    public Account(int number, String pinCode, double balance, String firstName, String lastName) {
         this.number = number;
         this.pinCode = pinCode;
-        this.remainder = remainder;
+        this.balance = balance;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getNumber() {
@@ -17,11 +21,15 @@ public class Account {
         return pinCode;
     }
 
-    public double getRemainder() {
-        return remainder;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setRemainder(double remainder) {
-        this.remainder = remainder;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }
