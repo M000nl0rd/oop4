@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class AccountDAO {
 
-    // Add a new account for a specific bank
+    // Add a new account
     public static void addAccount(int number, String pinCode, double balance, String firstName, String lastName, String bankName) {
         String sql = "INSERT INTO accounts (number, pin_code, balance, first_name, last_name, bank_name) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -24,7 +24,7 @@ public class AccountDAO {
         }
     }
 
-    // Remove an account by number for a specific bank
+    // Remove an account by number
     public static void removeAccount(int number, String bankName) {
         String sql = "DELETE FROM accounts WHERE number = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -43,7 +43,7 @@ public class AccountDAO {
         }
     }
 
-    // Retrieve an account by number and PIN for a specific bank
+    // Retrieve an account by number and PIN
     public static Account getAccount(int number, String pinCode, String bankName) {
         String sql = "SELECT * FROM accounts WHERE number = ? AND pin_code = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -69,7 +69,7 @@ public class AccountDAO {
         }
     }
 
-    // Retrieve an account by number (without PIN check) for a specific bank
+    // Retrieve an account by number (without PIN check)
     public static Account getAccountByNumber(int number, String bankName) {
         String sql = "SELECT * FROM accounts WHERE number = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -94,7 +94,7 @@ public class AccountDAO {
         }
     }
 
-    // Deposit money into an account for a specific bank
+    // Deposit money
     public static void replenishAccount(int number, double amount, String bankName) {
         String sql = "UPDATE accounts SET balance = balance + ? WHERE number = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -114,7 +114,6 @@ public class AccountDAO {
         }
     }
 
-    // Withdraw money from an account (with balance check) for a specific bank
     // Returns true if the withdrawal is successful, otherwise false
     public static boolean withdrawAccount(int number, double amount, String bankName) {
         Account account = getAccountByNumber(number, bankName);

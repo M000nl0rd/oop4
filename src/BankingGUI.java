@@ -42,7 +42,7 @@ public class BankingGUI extends JFrame {
         outputArea.setEditable(false);
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
 
-        // Login button action listener
+        // Login button action listener (отслеживает действия)
         loginButton.addActionListener(e -> {
             int atmNumber;
             try {

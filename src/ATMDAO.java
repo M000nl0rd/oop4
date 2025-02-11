@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class ATMDAO {
 
-    // Add an ATM with a balance for a specific bank
+    // Add an ATM with a balance
     public static void addATM(int atmNumber, String address, double balance, String bankName) {
         String sql = "INSERT INTO atms (atm_number, address, balance, bank_name) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -22,7 +22,7 @@ public class ATMDAO {
         }
     }
 
-    // Remove an ATM by number for a specific bank
+    // Remove an ATM by number
     public static void removeATM(int atmNumber, String bankName) {
         String sql = "DELETE FROM atms WHERE atm_number = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -41,7 +41,7 @@ public class ATMDAO {
         }
     }
 
-    // Retrieve an ATM by number for a specific bank
+    // Retrieve an ATM by number
     public static ATM getATM(int atmNumber, String bankName) {
         String sql = "SELECT * FROM atms WHERE atm_number = ? AND bank_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -63,7 +63,7 @@ public class ATMDAO {
         }
     }
 
-    // Update the ATM balance during withdrawal for a specific bank
+    // Update the ATM balance
     public static boolean withdrawFromATM(int atmNumber, double amount, String bankName) {
         String sql = "UPDATE atms SET balance = balance - ? WHERE atm_number = ? AND bank_name = ? AND balance >= ?";
         try (Connection conn = DatabaseConnection.getConnection();
